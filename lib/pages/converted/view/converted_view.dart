@@ -31,21 +31,18 @@ class ConvertedView extends StatelessWidget {
                   right: screenSize.width * 0.04),
               child: Column(children: [
                 const SizedBox(height: 5),
-                AnimatedContainer(
-                    height: convertedViewModel.savedAnimationFlag ? 60 : 0,
-                    duration: const Duration(seconds: 1),
-                    child: Column(
-                      children: [
-                        const Text("File Path",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                decoration: TextDecoration.underline)),
-                        const SizedBox(height: 5),
-                        Text(convertedViewModel.savedAnimationFlag
-                            ? "${convertedViewModel.pdfPath}"
-                            : ""),
-                      ],
-                    )),
+                convertedViewModel.savedAnimationFlag
+                    ? Column(
+                        children: [
+                          const Text("File Path",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  decoration: TextDecoration.underline)),
+                          const SizedBox(height: 5),
+                          Text("${convertedViewModel.pdfPath}"),
+                        ],
+                      )
+                    : SizedBox(height: screenSize.height * 0.055),
                 SizedBox(height: screenSize.height * 0.1),
                 Column(
                   children: [
