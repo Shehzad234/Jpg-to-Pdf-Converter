@@ -43,7 +43,10 @@ class HomeView extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 20),
-                    Text(homeViewModel.jpgFileName ?? ""),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+                      child: Text(homeViewModel.jpgFileName ?? ""),
+                    ),
                     const SizedBox(height: 100),
                     ElevatedButton(
                         onPressed: () => homeViewModel.convertjpgToPdf(context),

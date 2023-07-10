@@ -22,8 +22,9 @@ class HomeViewModel extends ChangeNotifier {
         allowedExtensions: ["jpg"],
         dialogTitle: "Pick jpg File");
     if (file != null) {
-      if (file.files.first.path!.endsWith(".jpg") == false) {
-        showMessage("Only Jpg format supported");
+      if (file.files.first.path!.endsWith(".jpg") == false &&
+          file.files.first.path!.endsWith(".jpeg") == false) {
+        showMessage("Only Jpg/Jpeg format supported");
         return;
       }
       jpgFilePath = file.files.first.path;
@@ -48,11 +49,23 @@ class HomeViewModel extends ChangeNotifier {
           child: pw.Image(image),
         ); // Center
       }));
-      var temp = jpgFilePath!.split("");
-      temp.removeRange(temp.length - 3, temp.length);
-      pdfFilepath = "${temp.join()}pdf";
-      log(pdfFilepath!);
-      pdfFileName = pdfFilepath!.split("/").last;
+      if (jpgFilePath!.endsWith("jpg")) {
+        log("JPG");
+
+        var temp = jpgFilePath!.split("");
+        temp.removeRange(temp.length - 3, temp.length);
+        pdfFilepath = "${temp.join()}pdf";
+        log(pdfFilepath!);
+        pdfFileName = pdfFilepath!.split("/").last;
+      }
+      if (jpgFilePath!.endsWith("jpeg")) {
+        log("JPEG");
+        var temp = jpgFilePath!.split("");
+        temp.removeRange(temp.length - 4, temp.length);
+        pdfFilepath = "${temp.join()}pdf";
+        log(pdfFilepath!);
+        pdfFileName = pdfFilepath!.split("/").last;
+      }
 
       final file = File(pdfFilepath!);
       await file.writeAsBytes(await pdf.save()).then((value) async {

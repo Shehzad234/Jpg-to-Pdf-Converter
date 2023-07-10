@@ -11,15 +11,14 @@ class PermissionViewModel extends ChangeNotifier {
     if (int.parse(androVersion) >= 13) {
       await Permission.photos.request();
       await Permission.videos.request();
-      await Permission.audio.request();
-      await Permission.storage.request();
     } else {
       await Permission.storage.request();
-      if (await Permission.storage.isGranted) {
-        // ignore: use_build_context_synchronously
-        Navigator.of(context)
-            .pushNamedAndRemoveUntil(HomeView.path, (route) => false);
-      }
+    }
+    if (await Permission.storage.isGranted ||
+        await Permission.photos.isGranted) {
+      // ignore: use_build_context_synchronously
+      Navigator.of(context)
+          .pushNamedAndRemoveUntil(HomeView.path, (route) => false);
     }
   }
 }
