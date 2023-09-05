@@ -10,7 +10,7 @@ class IntroView extends StatelessWidget {
     return Container(
       decoration: const BoxDecoration(
           image: DecorationImage(
-              image: AssetImage("assets/Beta.gif"), fit: BoxFit.cover)),
+              image: AssetImage("assets/splash.gif"), fit: BoxFit.cover)),
     );
   }
 }

@@ -18,7 +18,7 @@ class MyDrawer extends StatelessWidget {
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(30),
             image: const DecorationImage(
-                image: AssetImage("assets/Capture.PNG"), fit: BoxFit.fill)),
+                image: AssetImage("assets/icon.jpg"), fit: BoxFit.fill)),
       ),
       const Divider(
         thickness: 5,

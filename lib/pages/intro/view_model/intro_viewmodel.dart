@@ -1,4 +1,4 @@
-import '/pages/home/view/home_view.dart';
+import '../../home/view/home_view.dart';
 import '/pages/permssions/view/permission_view.dart';
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
